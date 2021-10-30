@@ -1,0 +1,26 @@
+{
+  "name": "bark-bark-sql",
+  "version": "1.0.0",
+  "description": "REST API to access GCP Bark Bark SQL breed data",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BobLouis/GCP_REST_API_database.git"
+  },
+  "keywords": [
+    "GCP_REST_API_Database"
+  ],
+  "author": "Bob Louis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BobLouis/GCP_REST_API_database/issues"
+  },
+  "homepage": "https://github.com/BobLouis/GCP_REST_API_database#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
