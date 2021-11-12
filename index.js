@@ -8,22 +8,32 @@ app.listen(port, () => {
     console.log(`BarkBark Rest API listening on port ${port}`);
 });
 
+
+
 app.get("/", async (req, res) => {
-    res.json({ status: "Bark bark! Ready to ROLL!" });
+
+    res.json({ status: "Bark Bark ready to roll" });
 });
 
+app.get("/test", async (req, res) => {
+
+    res.json({ status: "Bark Bark ready to roll" });
+});
+
+
 app.get("/:breed", async (req, res) => {
-    const query = "SELECT * FROM breeds WHERE name = ?";
-    mysql.query(query, [req.params.breed], (error, results) => {
-        if (!result[0]) {
-            res.json({ status: "Not found" });
+    const query = `SELECT * FROM breeds WHERE name = '${req.params.breed}'`;
+    pool.query(query, (error, results) => {
+        if (!results[0]) {
+            res.json({ status: "Not found!" });
         } else {
-            res.json(result[0]);
+            res.json(results[0]);
         }
     });
 });
 
 const pool = mysql.createPool({
+    // host: "34.81.187.215",
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
