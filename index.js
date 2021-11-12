@@ -39,3 +39,20 @@ const pool = mysql.createPool({
     database: process.env.DB_NAME,
     socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`,
 });
+
+app.post("/", async (req, res) => {
+    const data = {
+        neme: req.body.name,
+        lifeExpectancy: req.body.lifeExpectancy,
+        type: req.body.type,
+        origin: req.body.origin
+    }
+    const query = "INSERT INTO breeds VALUES (?, ?, ?, ?)";
+    pool.query(query, Object.values(data), (error) => {
+        if (error) {
+            res.json({ status: "failure", reason: error.code });
+        } else {
+            res.json({ status: "success", data: data });
+        }
+    });
+});
