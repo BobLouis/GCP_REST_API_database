@@ -42,7 +42,7 @@ const pool = mysql.createPool({
 
 app.post("/", async (req, res) => {
     const data = {
-        neme: req.body.name,
+        name: req.body.name,
         lifeExpectancy: req.body.lifeExpectancy,
         type: req.body.type,
         origin: req.body.origin
